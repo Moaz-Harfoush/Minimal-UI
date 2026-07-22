@@ -4,7 +4,7 @@ import React, { memo } from "react";
 import Link from "next/link";
 
 interface ButtonProps {
-  variant: "primary" | "secondary" | "icon";
+  variant: "primary" | "secondary" | "icon" | "menuItem";
   children: React.ReactNode;
   className?: string;
   isActive?: boolean;
@@ -30,6 +30,7 @@ const Button = ({
     secondary:
       "gap-2 px-4 py-2 border border-border-gray rounded-lg bg-pure-white text-sm font-medium text-dark-gray hover:bg-soft-gray",
     icon: `h-10 w-10 rounded-full text-medium-gray ${isActive ? "bg-border-gray" : "hover:bg-border-gray"}`,
+    menuItem: `w-full justify-start gap-2.5 p-2.5 font-medium transition-colors`,
   };
 
   const combinedClasses = `${baseStyles} ${variants[variant]} ${className}`;
