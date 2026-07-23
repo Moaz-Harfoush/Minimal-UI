@@ -8,7 +8,7 @@ const CustomWebsiteTooltip = ({
 }: RechartsCustomTooltipProps) => {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-pure-white/95 backdrop-blur-sm p-3 rounded-xl shadow-xl min-w-325">
+      <div className="bg-pure-white/95 backdrop-blur-sm p-3 rounded-xl shadow-xl min-w-25">
         <p className="text-center font-bold text-dark-gray text-xs mb-2">
           {label}
         </p>
