@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className="flex flex-col p-6 relative font-sans bg-soft-gray">
+    <div className="flex flex-col p-6 relative font-sans">
       <header>
         <Logo />
       </header>

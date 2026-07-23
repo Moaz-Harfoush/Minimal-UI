@@ -1,19 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo, useCallback, memo } from "react";
 import Button from "@/app/components/ui/Button";
 import SearchInput from "@/app/components/ui/SearchInput";
 import { ListFilterIcon, ArrowUpIcon } from "lucide-react";
 import { UsersTableProps } from "@/app/(dashboard)/user/_types/users.types";
-import { UserTableRow } from "@/app/(dashboard)/user/_components/UserTableRow";
-import { UserEmptyState } from "@/app/(dashboard)/user/_components/UserEmptyState";
+import UserTableRow from "@/app/(dashboard)/user/_components/UserTableRow";
+import UserEmptyState from "@/app/(dashboard)/user/_components/UserEmptyState";
 
-export const UsersTable = ({ users }: UsersTableProps) => {
+const UsersTable = ({ users }: UsersTableProps) => {
   const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredUsers = users.filter((user) =>
-    user.name.toLowerCase().includes(searchQuery.toLowerCase()),
+  const handleSearchChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setSearchQuery(e.target.value);
+    },
+    [],
   );
+
+  const filteredUsers = useMemo(() => {
+    return users.filter((user) =>
+      user.name.toLowerCase().includes(searchQuery.toLowerCase()),
+    );
+  }, [users, searchQuery]);
 
   return (
     <div className="flex flex-col gap-4 py-8 bg-pure-white rounded-2xl shadow-2xl">
@@ -21,7 +30,7 @@ export const UsersTable = ({ users }: UsersTableProps) => {
         <SearchInput
           placeholder="Search user..."
           value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          onChange={handleSearchChange}
         />
 
         <Button variant="icon" aria-label="Filter Icon">
@@ -69,3 +78,5 @@ export const UsersTable = ({ users }: UsersTableProps) => {
     </div>
   );
 };
+
+export default memo(UsersTable);

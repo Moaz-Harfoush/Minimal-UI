@@ -14,7 +14,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`h-full antialiased`}>
       <body
-        className={`${publicSans.className} min-h-full flex flex-col gap-1.5 [&::-webkit-scrollbar]:w-0`}
+        className={`${publicSans.className} bg-soft-gray min-h-full flex flex-col  gap-1.5`}
       >
         {children}
       </body>

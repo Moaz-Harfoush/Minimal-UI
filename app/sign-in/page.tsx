@@ -11,13 +11,13 @@ export const metadata: Metadata = {
 
 export default function SignInPage() {
   return (
-    <div className="min-h-screen w-full flex items-center justify-center p-4 relative overflow-hidden bg-soft-gray text-dark-gray">
+    <div className="min-h-screen w-full flex items-center justify-center p-4 relative overflow-hidden text-very-dark-gray">
       <div className="absolute top-6 left-6 flex items-center gap-2">
         <Logo />
       </div>
 
       <div className="absolute top-8 right-8">
-        <p className="text-sm font-semibold hover:underline text-dark-gray">
+        <p className="text-sm font-semibold hover:underline text-very-dark-gray">
           Need help?
         </p>
       </div>

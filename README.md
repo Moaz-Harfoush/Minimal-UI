@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Minimal-UI Dashboard (Next.js App Router)
 
-## Getting Started
+A modern, high-performance, and responsive Admin Dashboard built with **Next.js 14+ (App Router)**, **TypeScript**, and **Tailwind CSS**. Designed with modern React patterns, strict performance optimizations, and optimal UX/SEO balance.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 📋 Table of Contents
+
+- [Overview](#-overview)
+- [Key Features](#-key-features)
+- [Tech Stack](#-tech-stack)
+- [Architecture & Performance Optimizations](#-architecture--performance-optimizations)
+- [Folder Structure](#-folder-structure)
+- [Getting Started](#-getting-started)
+- [Environment Variables](#-environment-variables)
+- [Scripts](#-scripts)
+
+---
+
+## 🧐 Overview
+
+This project is a scalable, feature-rich admin dashboard designed to handle analytical data, interactive charts, and complex data tables. The application focuses heavily on **Server-Side Rendering (SSR)** efficiency, **Code Splitting**, and **State Memoization** to deliver lightning-fast page loads and zero layout shifts.
+
+---
+
+## ✨ Key Features
+
+- **📊 Dynamic Analytics & Charts:** Interactive charts powered by Recharts, lazily loaded with zero server-side hydration mismatches.
+- **👥 User Management Table:** Complete table featuring instant client-side searching, filter toggles, and status badges.
+- **⚡ Advanced Performance Optimizations:** Strategic separation between Server Components and Client Components to minimize JavaScript bundle size.
+- **🎨 Modern UI/UX:** Clean, accessible, responsive design with customized scrollbars, sticky headers, and smooth hover/active transitions.
+- **🔍 SEO & Metadata Prepared:** Pre-configured route-based dynamic metadata for maximum search engine indexability.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework:** [Next.js](https://nextjs.org/) (App Router)
+- **Language:** [TypeScript](https://www.typescript.org/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **Icons:** [Lucide React](https://lucide.dev/)
+- **Charts Library:** [Recharts](https://recharts.org/)
+
+---
+
+## ⚡ Architecture & Performance Optimizations
+
+### 1. Server Components First Strategy
+
+Pages and Layouts (`page.tsx`, `layout.tsx`) are preserved as **Server Components** by default. This guarantees fast initial HTML rendering, optimized Core Web Vitals (FCP, LCP), and complete SEO support.
+
+### 2. Isolated Client Boundaries (`"use client"`)
+
+Client interactivity is strictly pushed down to leaf nodes/components. This avoids polluting parent trees with client-side JavaScript execution.
+
+### 3. Dynamic Imports & Code Splitting (`next/dynamic`)
+
+Heavy client dependencies—specifically Recharts—are isolated into dedicated section components and dynamically imported with `{ ssr: false }`.
+
+- **Why?** Prevents window DOM manipulation errors during SSR and significantly reduces initial JavaScript payload.
+
+### 4. Re-render Protection (`memo`, `useMemo`, `useCallback`)
+
+- **`useMemo`:** Used for memory-intensive table filtering and data transformations.
+- **`useCallback`:** Retains stable reference handlers passed to child inputs/buttons.
+- **`memo`:** Wraps list items, menus, and table components (`UserTableRow`, `UserActionsMenu`, `UsersTable`) to eliminate unnecessary re-renders across sibling components.
+
+---
+
+## 📂 Folder Structure
+
+The project follows Next.js App Router **Co-location / Feature-Based** architecture using Private Folders (`_components`, `_types`):
+
+```text
+src/
+├── app/
+│   ├── (dashboard)/
+│   │   ├── _components/            # Shared or page-scoped components
+│   │   │   ├── analyses/           # Chart components
+│   │   │   │   ├── ConversionRates.tsx
+│   │   │   │   ├── PieChartWithCustomizedLabel.tsx
+│   │   │   │   ├── StatsGrid.tsx
+│   │   │   │   └── WebsiteVisitsCard.tsx
+│   │   │   ├── AnalysesSection.tsx  # Dynamic Client Boundary wrapper
+│   │   │   ├── News.tsx
+│   │   │   └── OrderTimeline.tsx
+│   │   ├── user/
+│   │   │   ├── _components/        # User page specific components
+│   │   │   │   ├── UserActionsMenu.tsx
+│   │   │   │   ├── UserTableRow.tsx
+│   │   │   │   └── UsersTable.tsx
+│   │   │   ├── _types/             # User TypeScript definitions
+│   │   │   └── page.tsx            # Users Page (Server Component)
+│   │   └── page.tsx                # Dashboard Main Page (Server Component)
+│   ├── layout.tsx                  # Global Root Layout
+│   └── globals.css                 # Custom Tailwind styles & theme variables
+└── components/
+    └── ui/                         # Reusable design system elements (Button, SearchInput)
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

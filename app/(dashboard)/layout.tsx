@@ -13,9 +13,7 @@ export default function RootLayout({
       <SidebarProvider>
         <Header />
         <Sidebar />
-        <main className="mt-21 lg:ml-80 px-6 bg-soft-gray py-12">
-          {children}
-        </main>
+        <main className="max-w-7xl mt-21 lg:ml-80 px-6 py-12">{children}</main>
         <SidebarOverlay />
       </SidebarProvider>
     </>

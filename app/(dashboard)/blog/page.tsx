@@ -27,7 +27,7 @@ export default function BlogPage() {
   return (
     <div className="flex flex-col w-full gap-4">
       <div className="flex w-full justify-between items-center">
-        <h2 className="font-bold text-2xl text-dark-gray">Blog</h2>
+        <h2 className="font-bold text-2xl text-very-dark-gray">Blog</h2>
         <Button variant="primary">+ New Post</Button>
       </div>
 

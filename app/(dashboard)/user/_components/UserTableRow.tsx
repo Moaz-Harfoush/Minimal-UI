@@ -1,10 +1,11 @@
 "use client";
 
+import { memo } from "react";
 import { CheckIcon } from "lucide-react";
-import { UserActionsMenu } from "@/app/(dashboard)/user/_components/UserActionsMenu";
+import UserActionsMenu from "@/app/(dashboard)/user/_components/UserActionsMenu";
 import { UserTableRowProps } from "@/app/(dashboard)/user/_types/users.types";
 
-export const UserTableRow = ({ user }: UserTableRowProps) => {
+const UserTableRow = ({ user }: UserTableRowProps) => {
   return (
     <tr className="hover:bg-soft-gray/50 transition-colors border-b border-b-very-dark-gray">
       <td className="p-4 whitespace-nowrap">
@@ -51,3 +52,5 @@ export const UserTableRow = ({ user }: UserTableRowProps) => {
     </tr>
   );
 };
+
+export default memo(UserTableRow);

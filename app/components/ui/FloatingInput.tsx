@@ -44,7 +44,7 @@ const FloatingInput = ({
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
         required={required}
-        className="w-full pl-4 pr-12 py-4 border-2 border-border-gray rounded-xl outline-none focus:border-very-dark-gray transition-all text-sm font-medium peer bg-transparent"
+        className="w-full pl-4 pr-12 py-4 border-2 border-border-gray rounded-xl outline-none focus:border-dark-gray transition-all text-sm font-medium peer bg-transparent"
         {...props}
       />
 
@@ -64,7 +64,7 @@ const FloatingInput = ({
           aria-label={showPassword ? "Hide password" : "Show password"}
           type="button"
           onClick={() => setShowPassword(!showPassword)}
-          className="absolute right-4 top-1/2 -translate-y-1/2 text-medium-gray hover:text-dark-gray transition-colors focus:outline-none min-h-8 min-w-8 flex items-center justify-center"
+          className="absolute right-4 top-1/2 -translate-y-1/2 text-medium-gray hover:text-very-dark-gray transition-colors focus:outline-none min-h-8 min-w-8 flex items-center justify-center"
         >
           {showPassword ? (
             <EyeOff className="w-5 h-5" />

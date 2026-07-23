@@ -24,7 +24,7 @@ const FeaturedPostGrid = () => {
               className="object-cover z-0 group-hover:scale-105 transition-transform duration-500"
             />
 
-            <div className="absolute inset-0 bg-linear-to-t from-black/60 to-black/60 z-10" />
+            <div className="absolute inset-0 bg-pure-black/60 z-10" />
 
             <div className="relative z-20">
               <div className="w-11 h-11 rounded-full overflow-hidden">

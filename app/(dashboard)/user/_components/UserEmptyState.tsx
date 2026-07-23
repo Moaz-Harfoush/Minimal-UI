@@ -1,7 +1,7 @@
 import { UserXIcon } from "lucide-react";
 import { UserEmptyStateProps } from "@/app/(dashboard)/user/_types/users.types";
 
-export const UserEmptyState = ({ searchQuery }: UserEmptyStateProps) => {
+const UserEmptyState = ({ searchQuery }: UserEmptyStateProps) => {
   return (
     <tr>
       <td colSpan={6} className="py-12 text-center">
@@ -21,3 +21,5 @@ export const UserEmptyState = ({ searchQuery }: UserEmptyStateProps) => {
     </tr>
   );
 };
+
+export default UserEmptyState;
